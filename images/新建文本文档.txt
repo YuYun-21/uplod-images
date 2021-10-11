@@ -1,0 +1,31 @@
+通过Fallback Factory检查回退原因
+	需要了解回退的原因，此时可使用注解@FeignClient的fallbackFactory属性。为Feign打印回退日志。
+	
+	
+	
+wzkj-admin
+	wzkj-admin-bean
+		com.wzkj.dto
+		com.wzkj.entity
+	wzkj-admin-client    调用wzkj-module中的controller接口
+		activiti.feign
+			fallback:	 容错处理，使出现异常的情况下系统可用，client调用失败
+			feignClient: 伪Http客户端
+	wzkj-admin-server	 访问wzkj-admin-server，转到wzkj-admin-client
+	
+wzkj.api     电脑端
+
+wzkj.auth    手机端
+wzkj.commons 公共模块
+wzkj.gateway 网关
+wzkj.module  模块
+wzkj.monitor 监控中心 Cors跨域
+wzkj.wxmp    微信小程序
+
+
+通过@EnableFeiginClients开启扫描Spring Cloud Feign客户端的功能，通过@FeignClient指定接口需要调用的服务名称
+再通过SpringMVC注解（@GetMapping）绑定服务方提供的接口
+
+问题：
+admin手机登录       提示验证码错误
+trace朔源管理       没有权限
